@@ -1,119 +1,127 @@
-import KasperLogo from "@/app/ui/kasper-logo";
-import Link from "next/link";
-import Image from "next/image";
-import { libre } from "./ui/fonts";
-import {
-  Disclosure,
-  DisclosureButton,
-  DisclosurePanel,
-  Menu,
-  MenuButton,
-  MenuItem,
-  MenuItems,
-} from "@headlessui/react";
-import {
-  CameraIcon,
-  EnvelopeIcon,
-  HomeIcon,
-  UserGroupIcon,
-} from "@heroicons/react/24/outline";
+"use client";
 
-const navigations = [
-  { name: "Home", href: "/", current: true, Icon: HomeIcon },
-  { name: "About Us", href: "/about", current: false, Icon: UserGroupIcon },
-  { name: "Instagram", href: "/instagram", current: false, Icon: CameraIcon },
-  { name: "Contact", href: "/contact", current: false, Icon: EnvelopeIcon },
-];
+import NavbarPage from "./navbar/page";
+import { doHyeon } from "./ui/fonts";
+import { Carousel } from "@material-tailwind/react";
 
-function classNames(...classes: string[]) {
-  return classes.filter(Boolean).join(" ");
-}
+export default function HomePage() {
+  const imageSliders = [
+    { name: "Cow", src: "/images/cow.png", description: "Descriptions" },
+    {
+      name: "Pablo x El Chapo",
+      src: "/images/pablo.png",
+      description: "Descriptions",
+    },
+    {
+      name: "Custom Pendant",
+      src: "/images/jorge.png",
+      description: "Descriptions",
+    },
+    {
+      name: "Yoshi Pendant",
+      src: "/images/yoshi.png",
+      description: "Descriptions",
+    },
+    {
+      name: "Memorial Pendant",
+      src: "/images/pugpendant.png",
+      description: "Descriptions",
+    },
+    {
+      name: "Cuban x Gucci Bracelet",
+      src: "/images/cubanxgucci.png",
+      description: "Descriptions",
+    },
+    {
+      name: "Various Diamond Chains",
+      src: "/images/chains.png",
+      description: "Descriptions",
+    },
+    {
+      name: "Rolex Watch",
+      src: "/images/rolex.png",
+      description: "Descriptions",
+    },
+  ];
 
-export default function Page() {
   return (
-    <main className="flex min-h-screen flex-col">
-      <div className="flex bg-black md:h-48 relative justify-between">
-        <KasperLogo />
-
-        <Disclosure as="nav" className={`${libre.className} self-end w-1/2`}>
-          <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
-            <div className="relative flex h-16 items-center justify-end">
-              <div className="flex items-center justify-center sm:items-stretch sm:justify-start">
-                <div className="flex space-x-4">
-                  {navigations.map((item) => {
-                    const { Icon } = item;
-                    return (
-                      <Link
-                        key={item.name}
-                        href={item.href}
-                        aria-current={item.current ? "page" : undefined}
-                        className={classNames(
-                          item.current
-                            ? "bg-gray-900 text-white"
-                            : "text-gray-300 hover:bg-gray-700 hover:text-white",
-                          "rounded-md px-3 py-2 text-sm text-base font-medium"
-                        )}
-                      >
-                        <div className="flex flex-row gap-2 items-end">
-                          <Icon className="w-6 h-6" />
-                          {item.name}
-                        </div>
-                      </Link>
-                    );
-                  })}
-                </div>
-              </div>
-
-              {/* Profile dropdown */}
-              <Menu as="div" className="relative ml-3">
-                <MenuButton className="relative flex rounded-full bg-gray-800 text-sm focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800 focus:outline-hidden">
-                  <Image
-                    alt="company logo"
-                    src="/images/logo.png"
-                    width={50}
-                    height={50}
-                    className="size-12 rounded-full"
+    <>
+      <NavbarPage />
+      <main className="relative flex flex-wrap h-screen w-screen overflow-y-hidden">
+        <h1
+          className={`${doHyeon.className} w-full h-12 flex items-center justify-center mx-auto text-4xl mt-2 font-semibold tracking-[20px] text-pretty text-gray-900`}
+        >
+          YSI DIAMOND
+        </h1>
+        <div className="w-screen flex flex-wrap justify-around gap-36">
+          <Carousel
+            autoplay
+            loop
+            transition={{ duration: 1 }}
+            className="rounded-xl overflow-hidden h-3/4 w-1/3 p-none m-2"
+            navigation={({ setActiveIndex, activeIndex, length }) => (
+              <div className="absolute bottom-4 left-2/4 z-50 flex -translate-x-2/4 gap-2">
+                {new Array(length).fill("").map((_, i) => (
+                  <span
+                    key={i}
+                    className={`block h-1 cursor-pointer rounded-2xl transition-all content-[''] ${
+                      activeIndex === i ? "w-8 bg-white" : "w-4 bg-white/50"
+                    }`}
+                    onClick={() => setActiveIndex(i)}
                   />
-                </MenuButton>
-                <MenuItems
-                  transition
-                  className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 ring-1 shadow-lg ring-black/5 transition focus:outline-hidden data-closed:scale-95 data-closed:transform data-closed:opacity-0 data-enter:duration-100 data-enter:ease-out data-leave:duration-75 data-leave:ease-in"
-                >
-                  <MenuItem>
-                    <Link
-                      href="/login"
-                      className="block px-4 py-2 text-sm text-gray-700 data-focus:bg-gray-100 data-focus:outline-hidden"
-                    >
-                      Sign In
-                    </Link>
-                  </MenuItem>
-                </MenuItems>
-              </Menu>
-            </div>
-          </div>
-
-          <DisclosurePanel className="sm:hidden">
-            <div className="space-y-1 px-2 pt-2 pb-3">
-              {navigations.map((item) => (
-                <DisclosureButton
-                  key={item.name}
-                  as="a"
-                  href={item.href}
-                  aria-current={item.current ? "page" : undefined}
-                  className={classNames(
-                    item.current
-                      ? "bg-gray-900 text-white"
-                      : "text-gray-300 hover:bg-gray-700 hover:text-white",
-                    "block rounded-md px-3 py-2 text-base font-medium"
-                  )}
-                >
-                  {item.name}
-                </DisclosureButton>
-              ))}
-            </div>
-          </DisclosurePanel>
-        </Disclosure>
-      </div>
-    </main>
+                ))}
+              </div>
+            )}
+            placeholder={null}
+            onPointerEnterCapture={null}
+            onPointerLeaveCapture={null}
+          >
+            {imageSliders.map((image) => {
+              return (
+                <img
+                  key={image.name}
+                  src={image.src}
+                  alt={image.name}
+                  className="h-full w-full object-cover object center"
+                />
+              );
+            })}
+          </Carousel>
+          <Carousel
+            autoplay
+            loop
+            transition={{ duration: 1 }}
+            className="rounded-xl overflow-hidden h-3/4 w-1/3 p-none m-2"
+            navigation={({ setActiveIndex, activeIndex, length }) => (
+              <div className="absolute bottom-4 left-2/4 z-50 flex -translate-x-2/4 gap-2">
+                {new Array(length).fill("").map((_, i) => (
+                  <span
+                    key={i}
+                    className={`block h-1 cursor-pointer rounded-2xl transition-all content-[''] ${
+                      activeIndex === i ? "w-8 bg-white" : "w-4 bg-white/50"
+                    }`}
+                    onClick={() => setActiveIndex(i)}
+                  />
+                ))}
+              </div>
+            )}
+            placeholder={null}
+            onPointerEnterCapture={null}
+            onPointerLeaveCapture={null}
+          >
+            {imageSliders.map((image) => {
+              return (
+                <img
+                  key={image.name}
+                  src={image.src}
+                  alt={image.name}
+                  className="h-full w-full object-cover object center"
+                />
+              );
+            })}
+          </Carousel>
+        </div>
+      </main>
+    </>
   );
 }

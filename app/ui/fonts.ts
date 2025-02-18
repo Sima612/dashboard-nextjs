@@ -1,5 +1,6 @@
 import {
   DM_Serif_Text,
+  Do_Hyeon,
   Inter,
   Libre_Baskerville,
   Lusitana,
@@ -13,3 +14,4 @@ export const dmserif = DM_Serif_Text({
   style: "italic",
 });
 export const libre = Libre_Baskerville({ subsets: ["latin"], weight: "700" });
+export const doHyeon = Do_Hyeon({ subsets: ["latin"], weight: "400" });
