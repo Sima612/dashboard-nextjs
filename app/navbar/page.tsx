@@ -1,8 +1,8 @@
 "use client";
 
-import KasperLogo from "@/app/ui/kasper-logo";
 import Link from "next/link";
 import Image from "next/image";
+import React from "react";
 import { libre } from "../ui/fonts";
 import {
   Disclosure,
@@ -14,7 +14,6 @@ import {
   MenuItems,
 } from "@headlessui/react";
 import {
-  CameraIcon,
   EnvelopeIcon,
   HomeIcon,
   UserGroupIcon,
@@ -27,7 +26,6 @@ const navigations = [
   { name: "Home", href: "/", current: true, Icon: HomeIcon },
   { name: "About Us", href: "/about", current: false, Icon: UserGroupIcon },
   { name: "Custom", href: "/custom", current: false, Icon: PuzzlePieceIcon },
-  { name: "Instagram", href: "/instagram", current: false, Icon: CameraIcon },
   { name: "Contact", href: "/contact", current: false, Icon: EnvelopeIcon },
 ];
 
@@ -41,19 +39,9 @@ export default function NavbarPage() {
   return (
     <Disclosure
       as="nav"
-      className={`${libre.className} relative flex justify-between w-screen h-16 bg-gradient-to-r from-zinc-500 from-10% via-zinc-700 via-50% to-zinc-900 to-90% border-none shadow-md shadow-zinc-500 rounded-tl-3xl rounded-br-3xl`}
+      className={`${libre.className} relative flex justify-end w-full h-2/25 bg-gradient-to-r from-zinc-700 from-10% via-zinc-800 via-50% to-zinc-900 to-90%`}
     >
-      <div className="absolute h-screen top-0 left-0 w-16 rounded-tl-3xl rounded-br-3xl bg-gradient-to-b from-zinc-500 from-10% via-zinc-700 via-50% to-zinc-900 to-90% -z-10 shadow-md shadow-zinc-500"></div>
-      <div className="h-full">
-        <Image
-          src="/images/k-no-bg.png"
-          width={50}
-          height={50}
-          alt="Kasper logo"
-          className="bg-none z-20 ml-1.5"
-        />
-      </div>
-      <div className="px-2 sm:px-6 lg:px-8">
+      <div className="pr-4">
         <div className="relative flex h-16 items-center justify-between">
           <div className="flex items-center justify-center sm:items-stretch sm:justify-start">
             <div className="flex space-x-4">
@@ -82,13 +70,13 @@ export default function NavbarPage() {
 
           {/* Profile dropdown */}
           <Menu as="div" className="relative ml-3">
-            <MenuButton className="relative flex rounded-full bg-gray-800 text-sm focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800 focus:outline-hidden cursor-pointer">
+            <MenuButton className="relative flex rounded-full bg-gray-800 text-sm ring-2 ring-white ring-offset-2 ring-offset-gray-800 cursor-pointer">
               <Image
                 alt="company logo"
                 src="/images/logo.png"
                 width={50}
                 height={50}
-                className="size-12 rounded-full"
+                className="size-10 rounded-full"
               />
             </MenuButton>
             <MenuItems

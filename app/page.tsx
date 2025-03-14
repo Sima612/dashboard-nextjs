@@ -1,8 +1,13 @@
 "use client";
 
 import NavbarPage from "./navbar/page";
-import { doHyeon } from "./ui/fonts";
-import { Carousel } from "@material-tailwind/react";
+import { libre, doHyeon } from "./ui/fonts";
+import { Typography, IconButton } from "@material-tailwind/react";
+import { Instagram } from "iconoir-react";
+import Link from "next/link";
+import Image from "next/image";
+
+const YEAR = new Date().getFullYear();
 
 export default function HomePage() {
   const imageSliders = [
@@ -43,85 +48,72 @@ export default function HomePage() {
       description: "Descriptions",
     },
   ];
+  const videoSliders = [
+    { src: "/videos/nationpack.mp4" },
+    { src: "/videos/jorge.mp4" },
+    { src: "/videos/yoshi.mp4" },
+    { src: "/videos/migos.mp4" },
+    { src: "/videos/arab.mp4" },
+    { src: "/videos/monopoly.mp4" },
+    { src: "/videos/otr.mp4" },
+    { src: "/videos/rude.mp4" },
+    { src: "/videos/prongcuban.mp4" },
+    { src: "/videos/world.mp4" },
+  ];
 
   return (
-    <>
+    <main className="relative">
       <NavbarPage />
-      <main className="relative flex flex-wrap h-screen w-screen overflow-y-hidden">
+      <div
+        className="absolute h-screen top-0 left-0 w-1/25 bg-gradient-to-b from-zinc-700 from-10% via-zinc-800 via-50% to-zinc-900 to-90% border-none"
+        style={{ writingMode: "vertical-lr", textOrientation: "upright" }}
+      >
+        <div className="relative h-18 w-full">
+          <Image
+            fill={true}
+            style={{ objectFit: "contain" }}
+            src="/images/diamond-nobg.png"
+            alt="diamond logo"
+          />
+        </div>
         <h1
-          className={`${doHyeon.className} w-full h-12 flex items-center justify-center mx-auto text-4xl mt-2 font-semibold tracking-[20px] text-pretty text-gray-900`}
+          className={`${doHyeon.className} absolute h-screen top-0 left-0 w-full items-center flex justify-center text-4xl font-semibold tracking-[20px] text-pretty text-white`}
         >
           YSI DIAMOND
         </h1>
-        <div className="w-screen flex flex-wrap justify-around gap-36">
-          <Carousel
-            autoplay
-            loop
-            transition={{ duration: 1 }}
-            className="rounded-xl overflow-hidden h-3/4 w-1/3 p-none m-2"
-            navigation={({ setActiveIndex, activeIndex, length }) => (
-              <div className="absolute bottom-4 left-2/4 z-50 flex -translate-x-2/4 gap-2">
-                {new Array(length).fill("").map((_, i) => (
-                  <span
-                    key={i}
-                    className={`block h-1 cursor-pointer rounded-2xl transition-all content-[''] ${
-                      activeIndex === i ? "w-8 bg-white" : "w-4 bg-white/50"
-                    }`}
-                    onClick={() => setActiveIndex(i)}
-                  />
-                ))}
-              </div>
-            )}
-            placeholder={null}
-            onPointerEnterCapture={null}
-            onPointerLeaveCapture={null}
-          >
-            {imageSliders.map((image) => {
-              return (
-                <img
-                  key={image.name}
-                  src={image.src}
-                  alt={image.name}
-                  className="h-full w-full object-cover object center"
-                />
-              );
-            })}
-          </Carousel>
-          <Carousel
-            autoplay
-            loop
-            transition={{ duration: 1 }}
-            className="rounded-xl overflow-hidden h-3/4 w-1/3 p-none m-2"
-            navigation={({ setActiveIndex, activeIndex, length }) => (
-              <div className="absolute bottom-4 left-2/4 z-50 flex -translate-x-2/4 gap-2">
-                {new Array(length).fill("").map((_, i) => (
-                  <span
-                    key={i}
-                    className={`block h-1 cursor-pointer rounded-2xl transition-all content-[''] ${
-                      activeIndex === i ? "w-8 bg-white" : "w-4 bg-white/50"
-                    }`}
-                    onClick={() => setActiveIndex(i)}
-                  />
-                ))}
-              </div>
-            )}
-            placeholder={null}
-            onPointerEnterCapture={null}
-            onPointerLeaveCapture={null}
-          >
-            {imageSliders.map((image) => {
-              return (
-                <img
-                  key={image.name}
-                  src={image.src}
-                  alt={image.name}
-                  className="h-full w-full object-cover object center"
-                />
-              );
-            })}
-          </Carousel>
+        <div className="absolute h-18 w-full left-0 bottom-0">
+          <Image
+            fill={true}
+            objectFit="contain"
+            src="/images/diamond-nobg.png"
+            alt="diamond logo"
+          />
         </div>
-      </main>
-    </>
+      </div>
+
+      <div className="flex h-full mx-auto w-full justify-center items-center">
+        <video className="h-full w-full" autoPlay loop muted>
+          <source src="/videos/landingpage.mp4" type="video/mp4" />
+        </video>
+      </div>
+
+      <footer className="w-full h-full mx-auto px-8 text-white mt-6">
+        <div className="flex w-full flex-col items-center justify-center gap-4 border-t border-surface py-4 md:flex-row md:justify-center">
+          <Typography type="small" className={`${libre.className} text-center`}>
+            &copy; {YEAR} <Link href="">YSI Diamond</Link>. All Rights Reserved.
+          </Typography>
+          <div className="flex gap-1 sm:justify-center">
+            <Link
+              href="https://www.instagram.com/kasperthejeweler/?hl=en"
+              target="_blank"
+            >
+              <IconButton color="secondary" variant="ghost" size="sm">
+                <Instagram className="h-6 w-6 cursor-pointer" />
+              </IconButton>
+            </Link>
+          </div>
+        </div>
+      </footer>
+    </main>
   );
 }

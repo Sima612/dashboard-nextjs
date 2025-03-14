@@ -2,7 +2,7 @@
 
 import { z } from "zod";
 import { sql } from "@vercel/postgres";
-import { expirePath } from "next/cache";
+import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { signIn } from "@/auth";
 import { AuthError } from "next-auth";
@@ -81,11 +81,11 @@ export async function createInvoice(prevState: State, formData: FormData) {
     `;
   } catch (error) {
     return {
-      message: "Database Error: Failed to Create Invoice",
+      error: "Database Error: Failed to Create Invoice",
     };
   }
 
-  expirePath("/dashboard/invoices");
+  revalidatePath("/dashboard/invoices");
   redirect("/dashboard/invoices");
 }
 
@@ -120,11 +120,11 @@ export async function updateInvoice(
     `;
   } catch (error) {
     return {
-      message: "Database Error: Failed to Update Invoice",
+      error: "Database Error: Failed to Update Invoice",
     };
   }
 
-  expirePath("/dashboard/invoices");
+  revalidatePath("/dashboard/invoices");
   redirect("/dashboard/invoices");
 }
 
@@ -133,11 +133,11 @@ export async function deleteInvoice(id: string) {
     await sql`
     DELETE FROM invoices WHERE id = ${id}
     `;
-    expirePath("/dashboard/invoices");
+    revalidatePath("/dashboard/invoices");
     return { message: "Deleted Invoice" };
   } catch (error) {
     return {
-      message: "Database Error: Failed to Delete Invoice",
+      error: "Database Error: Failed to Delete Invoice",
     };
   }
 }

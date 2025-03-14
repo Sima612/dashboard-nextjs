@@ -8,10 +8,7 @@ import { useActionState } from "react";
 import { authenticate } from "../lib/actions";
 
 export default function LoginForm() {
-  const [errorMessage, formAction, isPending] = useActionState(
-    authenticate,
-    undefined
-  );
+  const [formAction, isPending] = useActionState(authenticate, undefined);
 
   return (
     <form action={formAction} className={`${libre.className} rounded-2xl`}>
@@ -58,7 +55,7 @@ export default function LoginForm() {
             </div>
           </div>
         </div>
-        <Button className="mt-4 w-full" aria-disabled={isPending}>
+        <Button className="mt-4 w-full cursor-pointer">
           Log in <ArrowRightIcon className="ml-auto h-5 w-5 text-gray-50" />
         </Button>
       </div>
