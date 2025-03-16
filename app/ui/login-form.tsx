@@ -8,7 +8,7 @@ import { useActionState } from "react";
 import { authenticate } from "../lib/actions";
 
 export default function LoginForm() {
-  const [formAction, isPending] = useActionState(authenticate, undefined);
+  const [formAction] = useActionState(authenticate, undefined);
 
   return (
     <form action={formAction} className={`${libre.className} rounded-2xl`}>

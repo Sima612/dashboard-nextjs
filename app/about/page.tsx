@@ -1,5 +1,6 @@
 import NavbarPage from "../navbar/page";
 import { Metadata } from "next";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "About",
@@ -11,10 +12,12 @@ export default function AboutPage() {
       <NavbarPage />
       <section className="relative px-6 py-24 text-white">
         <div className="mx-auto max-w-2xl lg:max-w-4xl">
-          <img
+          <Image
             alt=""
             src="/images/logo.png"
-            className="mx-auto h-20 size-20 rounded-full"
+            height={25}
+            width={25}
+            className="mx-auto size-20 rounded-full"
           />
           <figure className="mt-10">
             <blockquote className="text-center text-xl/8 font-semibold sm:text-2xl/9">

@@ -10,57 +10,6 @@ import Image from "next/image";
 const YEAR = new Date().getFullYear();
 
 export default function HomePage() {
-  const imageSliders = [
-    { name: "Cow", src: "/images/cow.png", description: "Descriptions" },
-    {
-      name: "Pablo x El Chapo",
-      src: "/images/pablo.png",
-      description: "Descriptions",
-    },
-    {
-      name: "Custom Pendant",
-      src: "/images/jorge.png",
-      description: "Descriptions",
-    },
-    {
-      name: "Yoshi Pendant",
-      src: "/images/yoshi.png",
-      description: "Descriptions",
-    },
-    {
-      name: "Memorial Pendant",
-      src: "/images/pugpendant.png",
-      description: "Descriptions",
-    },
-    {
-      name: "Cuban x Gucci Bracelet",
-      src: "/images/cubanxgucci.png",
-      description: "Descriptions",
-    },
-    {
-      name: "Various Diamond Chains",
-      src: "/images/chains.png",
-      description: "Descriptions",
-    },
-    {
-      name: "Rolex Watch",
-      src: "/images/rolex.png",
-      description: "Descriptions",
-    },
-  ];
-  const videoSliders = [
-    { src: "/videos/nationpack.mp4" },
-    { src: "/videos/jorge.mp4" },
-    { src: "/videos/yoshi.mp4" },
-    { src: "/videos/migos.mp4" },
-    { src: "/videos/arab.mp4" },
-    { src: "/videos/monopoly.mp4" },
-    { src: "/videos/otr.mp4" },
-    { src: "/videos/rude.mp4" },
-    { src: "/videos/prongcuban.mp4" },
-    { src: "/videos/world.mp4" },
-  ];
-
   return (
     <main className="relative">
       <NavbarPage />

@@ -3,6 +3,7 @@
 import NavbarPage from "../navbar/page";
 import { Card, Typography } from "@material-tailwind/react";
 import { doHyeon } from "../ui/fonts";
+import Image from "next/image";
 
 // export const metadata: Metadata = {
 //   title: "Custom",
@@ -81,9 +82,15 @@ export default function CustomPage() {
       >
         <div className="grid content-evenly grid-cols-1 gap-2 sm:grid-cols-3 md:grid-cols-5 w-screen h-screen">
           {data.map(({ imageLink }, index) => (
-            <div key={index} className="w-full h-full grid">
-              <img
-                className="object-cover object-center w-full h-full max-w-full rounded-lg"
+            <div
+              key={index}
+              className="w-full h-full grid content-center justify-center"
+            >
+              <Image
+                className="object-center rounded-lg"
+                style={{ objectFit: "contain", objectPosition: "center" }}
+                width={250}
+                height={250}
                 src={imageLink}
                 alt="gallery-photo"
               />
@@ -92,13 +99,13 @@ export default function CustomPage() {
         </div>
 
         <Card className="absolute top-0 left-20 flex h-1/2 w-1/3 flex-row rounded-3xl border-8">
-          <Card.Header className="h-full w-1/2 shrink-0 rounded-r-none">
-            <img
-              src="/images/sketch.png"
-              alt="card-image"
-              className="h-full w-full object-cover"
-            />
-          </Card.Header>
+          <Image
+            src="/images/sketch.png"
+            alt="card-image"
+            width={300}
+            height={500}
+            style={{ objectFit: "cover" }}
+          />
           <Card.Body className="p-4 flex flex-col justify-center bg-[#374151] rounded-l-none text-[#f9fafb]">
             <Typography
               type="h5"
@@ -111,9 +118,9 @@ export default function CustomPage() {
             </Typography>
             <Typography className="mb-8 p-2 text-foreground">
               ipsum Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Laborum doloribus, architecto qui, quam eveniet sed fuga corrupti
-              quia sapiente laboriosam facilis doloremque! Sint voluptates,
-              accusantium excepturi quisquam adipisci quia praesentium.
+              Temporibus aperiam aspernatur quis quo odit exercitationem maxime
+              amet iste velit tempore, ex vitae dolorem tempora sint soluta.
+              Minima beatae aut praesentium.
             </Typography>
           </Card.Body>
         </Card>
@@ -136,13 +143,13 @@ export default function CustomPage() {
               Minima beatae aut praesentium.
             </Typography>
           </Card.Body>
-          <Card.Header className="h-full flex w-1/2 shrink-0 rounded-r-none">
-            <img
-              src="/images/cad.jpg"
-              alt="card-image"
-              className="h-full w-full object-cover"
-            />
-          </Card.Header>
+          <Image
+            src="/images/cad.jpg"
+            alt="card-image"
+            width={300}
+            height={500}
+            style={{ objectFit: "cover" }}
+          />
         </Card>
 
         <Card className="absolute bottom-10 left-110 flex h-1/2 w-1/3 flex-row border-8 rounded-3xl">
@@ -162,10 +169,10 @@ export default function CustomPage() {
               Finished Product
             </Typography>
             <Typography className="mb-8 p-2 text-foreground">
-              ipsum Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-              Recusandae dolore fuga voluptatem similique repellat alias
-              corrupti minima pariatur magni odio accusantium molestiae
-              provident nesciunt, eligendi quis fugit consectetur nisi! Optio?
+              ipsum Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Temporibus aperiam aspernatur quis quo odit exercitationem maxime
+              amet iste velit tempore, ex vitae dolorem tempora sint soluta.
+              Minima beatae aut praesentium.
             </Typography>
           </Card.Body>
         </Card>
