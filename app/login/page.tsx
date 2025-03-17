@@ -3,6 +3,7 @@ import { ArrowUturnLeftIcon } from "@heroicons/react/20/solid";
 import { Metadata } from "next";
 import Link from "next/link";
 import { libre } from "../ui/fonts";
+import { Suspense } from "react";
 
 export const metadata: Metadata = {
   title: "Login",
@@ -17,7 +18,9 @@ export default function LoginPage() {
         <Link className="w-full flex justify-end" href="/">
           <ArrowUturnLeftIcon className="h-8 text-gray-50 pr-4" />
         </Link>
-        <LoginForm />
+        <Suspense>
+          <LoginForm />
+        </Suspense>
       </div>
     </main>
   );
